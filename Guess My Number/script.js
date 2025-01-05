@@ -6,6 +6,7 @@ const highScore=document.querySelector('.highscore');
 const message=document.querySelector('.message');
 const againButton=document.querySelector('.again');
 const checkButton=document.querySelector('.check');
+const body=document.querySelector('body');
 
 function generateRandom(){
     return Math.trunc(Math.random()*20+1);
@@ -21,24 +22,36 @@ function ResetGame(){
     targetNumber=generateRandom();
     inputValue.value=''
     message.textContent="Start guessing..."
+    body.style.backgroundColor='#222'
+    inputValue.disabled=false
+    checkButton.disabled=false;
 }
 
 function checkInputHandler(event){
     console.log(targetNumber);
     if(+inputValue.value===targetNumber){
-        console.log('true');
-        message.textContent="Congratulations!!! It's correct"
+        message.textContent="It's correct 🎉"
+        inputValue.disabled=true;
+        checkButton.disabled=true;
+        body.style.backgroundColor='#45f248';
         setHighScore();
-    }
-    else if(+inputValue.value>targetNumber){
-        console.log('lower');
-        message.textContent="Lower--"
-        score.textContent=(+score.textContent-1).toString();
+        
     }
     else{
-    console.log('higher');
-    message.textContent="Higher++"
-    score.textContent=(+score.textContent-1).toString();
+        if(+inputValue.value>targetNumber){
+            message.textContent="Lower 🔽"
+            score.textContent=(+score.textContent-1).toString();
+        }
+        else{
+            message.textContent="Higher 🔼"
+            score.textContent=(+score.textContent-1).toString();
+        }
+        if(+score.textContent===0){
+            message.textContent="Game ended 🤯"
+            inputValue.disabled=true;
+            checkButton.disabled=true;
+            body.style.backgroundColor='#ff0f0f';
+        }
     }
 }
 
