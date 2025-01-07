@@ -15,6 +15,12 @@ function closeModalHandler(){
     modal.classList.add('hidden');
 }
 
+function escKeyHandler(e){
+    console.log(e.key)
+    if(e.key==="Escape"&& !modal.classList.contains('hidden'))
+        closeModalHandler();
+}
+
 
 for(let i=0;i<openModalBtn.length;i++)
     openModalBtn[i].addEventListener('click',openModalHandler);
@@ -22,4 +28,6 @@ for(let i=0;i<openModalBtn.length;i++)
 closeModalBtn.addEventListener('click',closeModalHandler)
 
 overlay.addEventListener('click',closeModalHandler);
+
+document.addEventListener('keydown',(e)=>{escKeyHandler(e)});
 
