@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    text-align: center;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+}
+
+#main{
+    position: relative;
+    top: 150px;
+}
+
+#date, #day{
+    font-size: 60px;
+    color: #C7C8CC;
+    font-weight: 600;
+}
+
+#date{
+    color: #686D76
+}
+
+#time{
+    font-size: 140px;
+}
